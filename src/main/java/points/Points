@@ -3,9 +3,9 @@ Test methed have to follow general signature:
 2. One of the principles in test deriven development is we don't write any more code  than our test demands of us.
 3. If we want to ignore a test method in JUnit 5 we put "@Disabled" on that method and in JUnit 4 we should put "@Ignore"
     instead.
-4. A very good and important point about assertEquals message:
-            //Better performance because string is not prepared for calling the method stack
+4. A very good and important point about assertEquals message (Lazy assert messages):
+            //Better performance because string is not prepared for calling the method stack (Lazy assert messages)
             assertEquals(-2, result, () -> num1 + "-" + num2 + " is not equals to " + result);
-            //It's not best practice because string is prepared for calling method even if Test is passd
+            //It's not the best practice because string is prepared for calling method even if Test is passd
             assertEquals(3, result, num1 + "-" + num2 + " is not equals to " + result)
 5.
