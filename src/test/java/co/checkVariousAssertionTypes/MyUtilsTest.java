@@ -1,4 +1,4 @@
-package com.checkVariousAssertionTypes;
+package co.checkVariousAssertionTypes;
 
 import org.junit.jupiter.api.Test;
 
@@ -140,7 +140,8 @@ class MyUtilsTest {
         assertAll(
                 "employeeInfo",
                 () -> assertNotNull(employee.getFirstName(), ()->"First Name Should not be null"),
-                () -> assertNotNull("murphy", employee.getLastName().toLowerCase())
+                () -> assertNotNull("murphy", employee.getLastName().toLowerCase()),
+                () -> assertEquals(2 + 3, 5, () -> "This is assert equals in assertAll() methods")
         );
     }
 
@@ -200,6 +201,8 @@ class MyUtilsTest {
                 () -> {
                     //code that requires less then 500 MillisSeconds to execute
                     Thread.sleep(400);
+                    System.out.println("----> After Thread sleep in 'assertTimeoutTest' and if test fails this is " +
+                            "printed too, on the contrary of 'assertTimeoutPreemptivelyTest' <---");
                 }
         );
     }
@@ -215,6 +218,7 @@ class MyUtilsTest {
 
                 () -> {
                     Thread.sleep(400);
+                    System.out.println("----> After Thread sleep in 'assertTimeoutPreemptivelyTest' and if the test fails this is not printed! <---");
                     return "Final Result";
                 });
     }
@@ -232,8 +236,9 @@ class MyUtilsTest {
      */
     @Test
     void assertLinesMatchTest() {
-        List<String> expected = Arrays.asList("Scala", "\\d+", "Java");
-        List<String> actual = Arrays.asList("Scala", "34", "Java");
+        //This check patterns not values!
+        List<String> expected = Arrays.asList("Scala", "\\d+", "Java", "[a-g]*");
+        List<String> actual = Arrays.asList("Scala", "34", "Java", "aaaabbbbeeeeeefffffffffggggggggggggg");
 
         assertLinesMatch(expected, actual);
     }

@@ -1,4 +1,4 @@
-package com.checkVariousAssertionTypes;
+package co.checkVariousAssertionTypes;
 
 public class Employee {
     private String firstName;

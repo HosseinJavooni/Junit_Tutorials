@@ -1,6 +1,5 @@
-package com.jabani;
+package co.jabani;
 
-import com.newAnnotations.FastTest;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
